@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from '../api.service';
+import { Item } from '../model/item';
 
 @Component({
   selector: 'app-item-list',
@@ -9,7 +10,9 @@ import { ApiService } from '../api.service';
 })
 export class ItemListComponent implements OnInit {
 
-  private items:  Array<object> = [];
+  private items: Item[] = [];
+  private sortOrder: string = 'name';
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
@@ -17,9 +20,13 @@ export class ItemListComponent implements OnInit {
   }
 
   private getItems() {
-    this.apiService.get('/api/items').subscribe((data:  Array<object>) => {
+    this.apiService.get('/api/items').subscribe((data: Item[]) => {
         this.items = data;
     });
+  }
+
+  sortChange(sort: any): void {
+      this.sortOrder = sort;
   }
 
   private deleteItem(item, index: number) {

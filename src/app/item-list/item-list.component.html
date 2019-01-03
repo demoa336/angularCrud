@@ -1,7 +1,14 @@
 <h1>
-My Contacts
+My Items
 </h1>
-<div>
+<div class="float-left" >
+Sort By: <select (change)="sortChange($event.target.value)" [(ngModel)]="sortOrder">
+        <option value="name">Name</option>
+        <option value="price">Price low to high</option>
+        <option value="-price">Price high to low</option>
+    </select>
+</div>
+<div style="width:100%; float: left;">
 <a class="btn btn-primary" [routerLink]="'/items/create'">Add</a>
 <table class="table">
 <tr>
@@ -10,10 +17,10 @@ My Contacts
     <th>Price</th>
     <th>Actions</th>
 </tr>
-<tr *ngFor="let item of items; index as i">
+<tr *ngFor="let item of items | sort: sortOrder; index as i">
     <td> <img width="100" height="100" src="{{ item.image }}" /> </td>
-    <td> {{ item.name }} </td>
-    <td> {{ item.price }} </td>
+    <td> {{ item.name | titlecase }} </td>
+    <td> {{ item.price | number:'1.2' }} </td>
     <td> <button class="btn btn-info" [routerLink]="['/items/edit', item.id]">Edit</button> &nbsp; <button class="btn btn-danger" (click)="deleteItem(item, i)">Delete</button> </td>
 </tr>
 </table>

@@ -87,8 +87,8 @@ export class ItemCreateComponent implements OnInit {
 		}
 
 		this.apiService.post('/api/items', formData).subscribe((data:  Array<object>) => {
-      this.router.navigate(['/'])
-    });
+	      this.router.navigate(['/'])
+	    });
 	} 
 
 

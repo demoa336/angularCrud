@@ -11,6 +11,7 @@ import { SignupComponent } from './Auth/signup/signup.component';
 import { LoginComponent } from './Auth/login/login.component';
 
 import { AuthInterceptor } from './Auth/auth.interceptor';
+import { SortPipe } from './sort.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthInterceptor } from './Auth/auth.interceptor';
     ItemListComponent,
     ItemCreateComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
