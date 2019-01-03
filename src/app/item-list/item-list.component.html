@@ -1,0 +1,22 @@
+<h1>
+My Contacts
+</h1>
+<div>
+<a class="btn btn-primary" [routerLink]="'/items/create'">Add</a>
+<table class="table">
+<tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Actions</th>
+</tr>
+<tr *ngFor="let item of items; index as i">
+    <td> <img width="100" height="100" src="{{ item.image }}" /> </td>
+    <td> {{ item.name }} </td>
+    <td> {{ item.price }} </td>
+    <td> <button class="btn btn-info" [routerLink]="['/items/edit', item.id]">Edit</button> &nbsp; <button class="btn btn-danger" (click)="deleteItem(item, i)">Delete</button> </td>
+</tr>
+</table>
+
+</div>
+
